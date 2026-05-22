@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Theme tokens ─────────────────────────────────────────── */
+:root {
+  /* Surfaces */
+  --paper:          #F4F1E8;   /* cream ledger paper */
+  --surface:        #FFFDF6;   /* slightly lighter for cards */
+  --grid:           #D8D3C0;   /* graph-paper grid lines */
+
+  /* Typography */
+  --ink:            #1A1814;   /* near-black ink */
+  --ink-soft:       #3D3A30;   /* secondary text */
+  --ink-quiet:      #7A7567;   /* muted / footnote */
+
+  /* Accent: ledger green */
+  --ledger:         #1F6F4A;   /* primary accent */
+  --ledger-light:   #E8F3EE;   /* tinted surface */
+  --ledger-rule:    #2E8A5E;   /* lighter green for rules */
+
+  /* Debit: red for negative/debit amounts */
+  --debit:          #B91C1C;
+
+  /* Rules / borders */
+  --rule:           #C8C3B0;   /* normal border */
+  --rule-soft:      #E0DBCC;   /* subtle border */
+
+  /* Amber for secondary accent (folio numbers, etc.) */
+  --amber:          #92681A;
+}
+
+/* ── Graph-paper background ──────────────────────────────── */
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ── Page-load reveal animation ──────────────────────────── */
+@keyframes ledger-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ledger-reveal {
+  animation: ledger-in 0.5s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ledger-reveal {
+    animation: none;
+  }
+}
+
+/* ── Typography classes ──────────────────────────────────── */
+.font-display  { font-family: var(--font-display), Georgia, serif; }
+.font-body     { font-family: var(--font-body), system-ui, sans-serif; }
+.font-mono     { font-family: var(--font-mono), monospace; }
+
+/* Tabular-numeral figures for all numeric contexts */
+.tabular-nums,
+.font-mono {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* ── Ledger-green horizontal rules ───────────────────────── */
+.ledger-rule-thick {
+  border: none;
+  border-top: 3px double var(--ledger);
+  margin: 0;
+}
+
+.ledger-rule-hair {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+.ledger-rule-double {
+  border: none;
+  border-top: 3px double var(--rule);
+  margin: 0;
+}
+
+/* ── Component classes ────────────────────────────────────── */
+
+/* Eyebrow / folio label */
+.ledger-eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+
+/* Primary button — ledger green ink */
+.ledger-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: var(--ledger);
+  color: #fff;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.55rem 1.25rem;
+  border: 2px solid var(--ledger);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+}
+
+.ledger-button:hover {
+  background: #174f35;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.ledger-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Ghost / outline button */
+.ledger-button-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: transparent;
+  color: var(--ledger);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.55rem 1.25rem;
+  border: 2px solid var(--ledger);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+}
+
+.ledger-button-ghost:hover {
+  background: var(--ledger-light);
+  box-shadow: 3px 3px 0 var(--ledger);
+}
+
+/* Debit amount text */
+.debit { color: var(--debit); }
+
+/* Credit / positive amount text */
+.credit { color: var(--ledger); }
+
+/* Folio number (step markers) */
+.folio {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+}
+
+/* ── Ledger table ─────────────────────────────────────────── */
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.875rem;
+}
+
+.ledger-table thead tr {
+  background: var(--ink);
+  color: #fff;
+}
+
+.ledger-table thead th {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ledger-table thead th.num {
+  text-align: right;
+}
+
+.ledger-table tbody tr {
+  border-bottom: 1px solid var(--rule-soft);
+  transition: background 0.1s;
+}
+
+.ledger-table tbody tr:nth-child(even) {
+  background: rgba(212, 207, 192, 0.25);
+}
+
+.ledger-table tbody tr:hover {
+  background: var(--ledger-light);
+}
+
+.ledger-table tbody td {
+  padding: 0.55rem 0.75rem;
+  color: var(--ink-soft);
+  vertical-align: top;
+}
+
+.ledger-table tbody td.num {
+  text-align: right;
+  font-family: var(--font-mono), monospace;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.ledger-table tbody td.null-cell {
+  color: var(--ink-quiet);
+  font-style: italic;
+}
+
+.ledger-table tfoot tr {
+  border-top: 3px double var(--ink);
+}
+
+.ledger-table tfoot td {
+  padding: 0.6rem 0.75rem;
+  font-family: var(--font-mono), monospace;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: right;
+}
+
+.ledger-table tfoot td.label {
+  text-align: left;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+}
