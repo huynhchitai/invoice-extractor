@@ -252,9 +252,9 @@ export default function HomePage() {
             Tai Huynh · 2026 · built with Next.js &amp; Vertex AI (Gemini 2.5 Flash)
           </p>
           <p className="font-mono text-xs" style={{ color: 'var(--ink-quiet)' }}>
-            <a href="https://github.com/0CCHacker" className="hover:text-[var(--ink)]">Tai Huynh</a>
+            <a href="https://github.com/huynhchitai" className="hover:text-[var(--ink)]">Tai Huynh</a>
             <span className="mx-2" style={{ color: 'var(--rule)' }}>·</span>
-            <a href="https://github.com/0CCHacker" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--ink)]">github</a>
+            <a href="https://github.com/huynhchitai" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--ink)]">github</a>
             <span className="mx-2" style={{ color: 'var(--rule)' }}>·</span>
             <a href="mailto:huynhchitai.070306@gmail.com" className="hover:text-[var(--ink)]">email</a>
           </p>

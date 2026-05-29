@@ -2,7 +2,7 @@
 
 Upload an invoice or receipt — get clean structured data: vendor, line items, totals, tax.
 
-> Portfolio Project #4 · [Tai Huynh](https://github.com/0CCHacker)
+> Portfolio Project #4 · [Tai Huynh](https://github.com/huynhchitai)
 
 ---
 

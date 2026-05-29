@@ -49,7 +49,7 @@ export default function LedgerBar() {
             How it works
           </Link>
           <a
-            href="https://github.com/0CCHacker"
+            href="https://github.com/huynhchitai"
             target="_blank"
             rel="noopener noreferrer"
             className="ledger-eyebrow transition-colors hover:text-[var(--ink)]"
